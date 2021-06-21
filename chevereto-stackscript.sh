@@ -6,6 +6,10 @@ CHEVERETO_INSTALLER_TAG="2.2.3"
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 WORKING_DIR="/var/www/html"
 
+## REQUIRED IN EVERY MARKETPLACE SUBMISSION
+# Add Logging to /var/log/stackscript.log for future troubleshooting
+exec 1> >(tee -a "/var/log/stackscript.log") 2>&1
+
 # 00-update.sh
 DEBIAN_FRONTEND=noninteractive apt-get update -qq >/dev/null
 apt install -y apache2 libapache2-mod-php
