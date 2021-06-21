@@ -16,9 +16,7 @@ Latest Version
 
 ### Support URL
 
-[Forum](https://forum.openlitespeed.org/)
-[Document](https://docs.litespeedtech.com/cloud/images/cyberpanel/)
-[Email](mailto:support@litespeedtech.com)
+[Support](https://chevereto.com/support)
 
 ### Operating System
 
