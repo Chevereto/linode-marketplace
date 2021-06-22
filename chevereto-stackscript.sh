@@ -6,6 +6,10 @@ CHEVERETO_INSTALLER_TAG="2.2.3"
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 WORKING_DIR="/var/www/html"
 
+## REQUIRED IN EVERY MARKETPLACE SUBMISSION
+# Add Logging to /var/log/stackscript.log for future troubleshooting
+exec 1> >(tee -a "/var/log/stackscript.log") 2>&1
+
 ## 03-force-ssh-logout.sh
 cat >>/etc/ssh/sshd_config <<EOM
 Match User root
@@ -13,10 +17,6 @@ Match User root
 EOM
 
 systemctl restart ssh
-
-## REQUIRED IN EVERY MARKETPLACE SUBMISSION
-# Add Logging to /var/log/stackscript.log for future troubleshooting
-exec 1> >(tee -a "/var/log/stackscript.log") 2>&1
 
 # 00-update.sh
 DEBIAN_FRONTEND=noninteractive apt-get update -qq >/dev/null
