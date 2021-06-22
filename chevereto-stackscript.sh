@@ -71,6 +71,7 @@ set -eux
     echo "To delete this message of the day: rm -rf \$(readlink -f \${0})"
     echo "EOF"
 } >/etc/update-motd.d/99-one-click
+chmod +x /etc/update-motd.d/99-one-click
 set -eux
 {
     echo "* * * * * www-data php /var/www/html/cli.php -C cron"
