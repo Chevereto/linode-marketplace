@@ -97,11 +97,11 @@ EOM
 
 # 11-installer.sh
 rm -rf "${WORKING_DIR}"/*
-mkdir -p /chevereto && mkdir -p /chevereto/{download,installer}
+mkdir -p /chevereto && mkdir -p /chevereto/download
 cd /chevereto/download
-curl -S -o installer.tar.gz -L "https://github.com/chevereto/installer/archive/${CHEVERETO_INSTALLER_TAG}.tar.gz"
-tar -xvzf installer.tar.gz
-mv -v installer-"${CHEVERETO_INSTALLER_TAG}"/installer.php "${WORKING_DIR}"/installer.php
+curl -S -o installer.php -L "https://github.com/chevereto/installer/releases/download/${CHEVERETO_INSTALLER_TAG}/installer.php"
+mv -v installer.php "${WORKING_DIR}"/installer.php
+touch "${WORKING_DIR}"/installer.lock
 cd $WORKING_DIR
 
 # 12-apache.sh
@@ -170,6 +170,8 @@ sed -e '/Match User root/d' \
     -i /etc/ssh/sshd_config
 
 systemctl restart ssh
+
+rm -rf "${WORKING_DIR}"/installer.lock
 
 echo $(date -u) ": System provisioning script is complete." >>/var/log/per-instance.log
 
