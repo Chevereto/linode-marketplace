@@ -4,7 +4,6 @@
 set -e
 
 CHEVERETO_INSTALLER_TAG="3.1.0"
-PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 WORKING_DIR="/var/www/html"
 
 ## REQUIRED IN EVERY MARKETPLACE SUBMISSION
